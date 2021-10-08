@@ -25,8 +25,6 @@ class TestCellTableViewCell: UITableViewCell {
         setupUI()
         nameCuestion.text = item.name
         
-        
-        
         for option in item.options {
             let stackView = UIStackView()
             stackView.axis = .horizontal

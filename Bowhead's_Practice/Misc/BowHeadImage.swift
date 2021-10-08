@@ -13,6 +13,8 @@ enum BowHeadImage: String {
     case manSecurity = "manSecurity"
     case doctors = "doctors"
     
+    
+    
     var image: UIImage {
         return UIImage(named: self.rawValue)!
     }

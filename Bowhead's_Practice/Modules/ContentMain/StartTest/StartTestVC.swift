@@ -7,36 +7,13 @@
 
 import UIKit
 
-struct Cuestion {
-    var name : String
-    var options : [Option]
-}
-struct Option {
-    var id : Int
-    var name : String
-    var selected : Bool = false
-}
 
-
-class StartTestVC: UIViewController {
+class StartTestVC: UIViewController, Storyboarded{
 
     @IBOutlet weak var doctorsImg: UIImageView!
     @IBOutlet weak var introductionLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var submitTestBtn: AttributedButton!
-    
-    var cuestions : [Cuestion] = [
-        Cuestion(name: "How do you feel?", options: [
-            Option(id: 1, name: "Perfect, thank you!"),
-            Option(id: 2, name: "Meh, I'm alive"),
-            Option(id: 3, name: "Worst day ever")
-        ]),
-        Cuestion(name: "Did you sleep well", options: [
-            Option(id: 4, name: "Yes"),
-            Option(id: 5, name: "No")
-        ])
-    ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +50,20 @@ class StartTestVC: UIViewController {
         return isEnable
     }
     
+    func submit(){
+        
+        var answersToday = Answers(dateTime: Date(), answers: [])
+        
+        for cuestion in cuestions {
+            let optionSelected = cuestion.options.filter({ $0.selected }).first!
+            answersToday.answers.append(
+                Answer(idCuestion: cuestion.idCuestion, idOption: optionSelected.id)
+            )
+        }
+        
+        #warning("Save Answers")
+    }
+    
 }
 
 extension StartTestVC : UITableViewDelegate, UITableViewDataSource {
@@ -89,11 +80,11 @@ extension StartTestVC : UITableViewDelegate, UITableViewDataSource {
         
         cell.pressActionHandler = { id in
             //print("\(id)")
-            for (indey, option) in self.cuestions[row].options.enumerated() {
+            for (indey, option) in cuestions[row].options.enumerated() {
                 if option.id == id {
-                    self.cuestions[row].options[indey].selected = true
+                    cuestions[row].options[indey].selected = true
                 }else {
-                    self.cuestions[row].options[indey].selected = false
+                    cuestions[row].options[indey].selected = false
                 }
             }
             self.submitTestBtn.isEnabled = self.evaluateSubmit()

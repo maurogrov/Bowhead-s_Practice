@@ -22,7 +22,7 @@
         <!--StartVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="StartVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartVC" id="BYZ-38-t0r" customClass="StartVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
         <!--LoginVC-->
         <scene sceneID="1X7-A1-1Hj">
             <objects>
-                <viewController id="ueq-ml-lh3" customClass="LoginVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="ueq-ml-lh3" customClass="LoginVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l4v-h8-iqK">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,10 +158,55 @@
             </objects>
             <point key="canvasLocation" x="796" y="77"/>
         </scene>
+        <!--Contenedor PrincipalVC-->
+        <scene sceneID="mVE-n3-W9I">
+            <objects>
+                <viewController storyboardIdentifier="ContenedorPrincipalVC" id="rzn-fF-aWv" customClass="ContenedorPrincipalVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Jv-zL-sy8">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-b5-RfJ" customClass="AttributedTabBar" customModule="Bowhead_s_Practice" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="822" width="428" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="WDd-cV-vVU"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="bSc-xJ-qyN"/>
+                                    <tabBarItem systemItem="more" id="0sn-pA-7xi"/>
+                                </items>
+                            </tabBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKj-pc-U6v">
+                                <rect key="frame" x="0.0" y="44" width="428" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jFz-ud-Y9f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TRF-b5-RfJ" firstAttribute="trailing" secondItem="jFz-ud-Y9f" secondAttribute="trailing" id="BNg-wu-BX7"/>
+                            <constraint firstItem="TRF-b5-RfJ" firstAttribute="top" secondItem="RKj-pc-U6v" secondAttribute="bottom" id="CEK-Az-Hfk"/>
+                            <constraint firstItem="TRF-b5-RfJ" firstAttribute="leading" secondItem="jFz-ud-Y9f" secondAttribute="leading" id="Kea-0n-DRK"/>
+                            <constraint firstItem="jFz-ud-Y9f" firstAttribute="trailing" secondItem="RKj-pc-U6v" secondAttribute="trailing" id="SzP-Xf-WqQ"/>
+                            <constraint firstItem="jFz-ud-Y9f" firstAttribute="bottom" secondItem="TRF-b5-RfJ" secondAttribute="bottom" id="cgS-1e-r0Y"/>
+                            <constraint firstItem="RKj-pc-U6v" firstAttribute="top" secondItem="jFz-ud-Y9f" secondAttribute="top" id="oeV-P1-vjC"/>
+                            <constraint firstItem="RKj-pc-U6v" firstAttribute="leading" secondItem="jFz-ud-Y9f" secondAttribute="leading" id="rc2-Ld-pgw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contenedorControladorView" destination="RKj-pc-U6v" id="T3R-kj-xid"/>
+                        <outlet property="tabBarOpciones" destination="TRF-b5-RfJ" id="wRx-ny-PpZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eML-Fg-p77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-514" y="737"/>
+        </scene>
         <!--Start TestVC-->
         <scene sceneID="ndr-Ob-2zp">
             <objects>
-                <viewController id="Wi3-c3-150" customClass="StartTestVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartTestVC" id="Wi3-c3-150" customClass="StartTestVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Jy-Mc-HAk">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,12 +262,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gf4-CB-epv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="76"/>
+            <point key="canvasLocation" x="139" y="737"/>
         </scene>
         <!--Test ControlVC-->
         <scene sceneID="ou6-dv-uod">
             <objects>
-                <viewController id="9Ev-jT-DHm" customClass="TestControlVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestControlVC" id="9Ev-jT-DHm" customClass="TestControlVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u5R-gM-zB1">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,7 +308,7 @@
                                                     <constraint firstItem="3zO-qX-jhg" firstAttribute="top" secondItem="EGB-cl-YV3" secondAttribute="top" constant="32" id="muH-WL-gNo"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="428" placeholderIntrinsicHeight="128" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zFH-aW-Pqe">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="428" placeholderIntrinsicHeight="128" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zFH-aW-Pqe">
                                                 <rect key="frame" x="0.0" y="150" width="428" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -296,12 +341,13 @@
                     <connections>
                         <outlet property="backBtn" destination="3zO-qX-jhg" id="MQf-Ks-zEP"/>
                         <outlet property="backView" destination="EGB-cl-YV3" id="cW1-Qn-EHf"/>
+                        <outlet property="tableView" destination="zFH-aW-Pqe" id="39R-zd-BNp"/>
                         <outlet property="titleLbl" destination="AcD-G8-Ock" id="Vzf-kO-w56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSO-zm-rFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2156.0747663551401" y="75.809935205183592"/>
+            <point key="canvasLocation" x="813" y="737"/>
         </scene>
     </scenes>
     <resources>
