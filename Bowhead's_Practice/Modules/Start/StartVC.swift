@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartVC: UIViewController {
+class StartVC: UIViewController, Storyboarded {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var walleImg: UIImageView!
@@ -40,6 +40,15 @@ class StartVC: UIViewController {
         leyendLbl.font = BowHeadFont.Medium.font(ofSize: .Medium)
         
         startBtn.setTitle("START", for: .normal)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(goTo(_:)))
+        startBtn.addGestureRecognizer(gesture)
+    }
+    
+    @objc func goTo(_ : UITapGestureRecognizer) {
+        
+        let vc = LoginVC.instantiate(fromStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

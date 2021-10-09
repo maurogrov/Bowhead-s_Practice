@@ -51,6 +51,20 @@ extension TestControlVC {
         tableView.delegate = self
         tableView.dataSource = self
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(goTo(_:)))
+        backBtn.addGestureRecognizer(gesture)
+        
+    }
+    
+    @objc func goTo(_ : UITapGestureRecognizer) {
+        
+        let vc = StartTestVC.instantiate(fromStoryboard: .Main)
+        NotificationCenter.default.post(
+            name: BowInternalNotification.hijoControlador.name,
+            object: nil,
+            userInfo: ["child": vc])
+        
+    
     }
 }
 

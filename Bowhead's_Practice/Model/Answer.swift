@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Answers {
+struct Answers: Codable {
     var dateTime : Date
-    
     var answers : [Answer]
 }
-struct Answer {
+
+struct Answer: Codable {
     var idCuestion: Int
     var idOption: Int
 }

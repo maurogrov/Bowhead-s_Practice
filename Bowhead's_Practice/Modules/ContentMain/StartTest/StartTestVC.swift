@@ -14,12 +14,38 @@ class StartTestVC: UIViewController, Storyboarded{
     @IBOutlet weak var introductionLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var submitTestBtn: AttributedButton!
+    @IBOutlet weak var closeBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setup()
+        
+//        if let x = AnswersDB.shared.getAnswers() {
+//            print(x)
+//            try? AnswersDB.shared.deleteAnswers()
+//        }
+//        else {
+//            let x = Answers(dateTime: Date(), answers: [])
+//            try? AnswersDB.shared.setAnswers(answers: x)
+//            let y = AnswersDB.shared.getAnswers()
+//            print(y!)
+//        }
+//
+        
+//        let user = UserAccountDB.shared.getCuenta()
+//        try? UserAccountDB.shared.set(cuenta: UserAccount(name: "Anonimous", password: "123123"))
+//        let user2 = UserAccountDB.shared.getCuenta()
+//        print(user2)
+//
+//        UserAccountDB.shared.deleteCuenta()
+//        let user3 = UserAccountDB.shared.getCuenta()
+//
+        print("finished")
+        
+    
+        
     }
     
     func setupUI(){
@@ -29,6 +55,8 @@ class StartTestVC: UIViewController, Storyboarded{
         introductionLbl.font = BowHeadFont.SemiBold.font(ofSize: .Large)
         submitTestBtn.setTitle("Submit", for: .normal)
         submitTestBtn.isEnabled = false
+        closeBtn.setImage(UIImage(systemName: "power"), for: .normal)
+        closeBtn.tintColor = BowHeadColor.GreenAqua.color
         
     }
     
@@ -36,6 +64,9 @@ class StartTestVC: UIViewController, Storyboarded{
         tableView.register(UINib(nibName: TestCellTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TestCellTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(closeSession(_:)))
+        closeBtn.addGestureRecognizer(gesture)
     }
     
     func evaluateSubmit() -> Bool {
@@ -62,6 +93,19 @@ class StartTestVC: UIViewController, Storyboarded{
         }
         
         #warning("Save Answers")
+    }
+    
+    @objc func closeSession(_ : UITapGestureRecognizer) {
+        
+        UserAccountDB.shared.deleteCuenta()
+        if UserAccountDB.shared.getCuenta() == nil {
+            goto()
+        }
+    }
+    
+    func goto(){
+        let vc = StartVC.instantiate(fromStoryboard: .Main)
+        self.navigationController?.setViewControllers([vc], animated: true)
     }
     
 }

@@ -38,6 +38,12 @@
 		221EE7CC2710AA88008DB36D /* UIViewController+Exstensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7CB2710AA88008DB36D /* UIViewController+Exstensions.swift */; };
 		221EE7CE2710E453008DB36D /* UIViewController+Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7CD2710E453008DB36D /* UIViewController+Storyboarded.swift */; };
 		221EE7D12710F89E008DB36D /* AttibutedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7D02710F89E008DB36D /* AttibutedTabBar.swift */; };
+		221EE7D32711E633008DB36D /* AnswersDB+Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7D22711E633008DB36D /* AnswersDB+Singleton.swift */; };
+		221EE7D92711F177008DB36D /* BowHeadDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7D72711F177008DB36D /* BowHeadDB.xcdatamodeld */; };
+		221EE7DF2711F5D5008DB36D /* UserAccountDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7DE2711F5D5008DB36D /* UserAccountDB.swift */; };
+		221EE7E92711FFF5008DB36D /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7E82711FFF5008DB36D /* UserAccount.swift */; };
+		221EE7EB271201EB008DB36D /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7EA271201EB008DB36D /* LaunchScreenVC.swift */; };
+		221EE7EE27120D68008DB36D /* BowInternalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7ED27120D68008DB36D /* BowInternalNotification.swift */; };
 		225F8926270F736E003E38AB /* StartTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F8925270F736E003E38AB /* StartTestVC.swift */; };
 		225F8928270F757C003E38AB /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 225F8927270F757C003E38AB /* Poppins-SemiBold.ttf */; };
 		225F892B270F76AA003E38AB /* TestControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F892A270F76AA003E38AB /* TestControlVC.swift */; };
@@ -82,6 +88,12 @@
 		221EE7CB2710AA88008DB36D /* UIViewController+Exstensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Exstensions.swift"; sourceTree = "<group>"; };
 		221EE7CD2710E453008DB36D /* UIViewController+Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboarded.swift"; sourceTree = "<group>"; };
 		221EE7D02710F89E008DB36D /* AttibutedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttibutedTabBar.swift; sourceTree = "<group>"; };
+		221EE7D22711E633008DB36D /* AnswersDB+Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnswersDB+Singleton.swift"; sourceTree = "<group>"; };
+		221EE7D82711F177008DB36D /* BowHeadDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BowHeadDB.xcdatamodel; sourceTree = "<group>"; };
+		221EE7DE2711F5D5008DB36D /* UserAccountDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountDB.swift; sourceTree = "<group>"; };
+		221EE7E82711FFF5008DB36D /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		221EE7EA271201EB008DB36D /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
+		221EE7ED27120D68008DB36D /* BowInternalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowInternalNotification.swift; sourceTree = "<group>"; };
 		225F8925270F736E003E38AB /* StartTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTestVC.swift; sourceTree = "<group>"; };
 		225F8927270F757C003E38AB /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		225F892A270F76AA003E38AB /* TestControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControlVC.swift; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 		19B8CB5E270EA0FA00368B2D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				221EE7EC271201F1008DB36D /* LaunchScreen */,
 				19B8CB73270EB20000368B2D /* Login */,
 				19B8CB5F270EA10C00368B2D /* Start */,
 				225F8923270F7344003E38AB /* ContentMain */,
@@ -187,6 +200,7 @@
 				19B8CB67270EA57500368B2D /* Font */,
 				19B8CB63270EA3AE00368B2D /* BowHeadImage.swift */,
 				19B8CB71270EAD3A00368B2D /* BowHeadColor.swift */,
+				221EE7ED27120D68008DB36D /* BowInternalNotification.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -247,10 +261,12 @@
 		221EE7BB27109741008DB36D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				221EE7D42711E6AF008DB36D /* DB */,
 				221EE7BC27109755008DB36D /* Cuestion.swift */,
 				221EE7BE2710976F008DB36D /* Option.swift */,
 				221EE7C027109783008DB36D /* Answer.swift */,
 				221EE7C2271097B0008DB36D /* Catalog+Answer-Option.swift */,
+				221EE7E82711FFF5008DB36D /* UserAccount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +294,24 @@
 				221EE7D02710F89E008DB36D /* AttibutedTabBar.swift */,
 			);
 			path = UITabBar;
+			sourceTree = "<group>";
+		};
+		221EE7D42711E6AF008DB36D /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				221EE7D72711F177008DB36D /* BowHeadDB.xcdatamodeld */,
+				221EE7D22711E633008DB36D /* AnswersDB+Singleton.swift */,
+				221EE7DE2711F5D5008DB36D /* UserAccountDB.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		221EE7EC271201F1008DB36D /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				221EE7EA271201EB008DB36D /* LaunchScreenVC.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		225F8923270F7344003E38AB /* ContentMain */ = {
@@ -409,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225F8937270F9F8A003E38AB /* CheckBoxButton.swift in Sources */,
+				221EE7D92711F177008DB36D /* BowHeadDB.xcdatamodeld in Sources */,
 				221EE7BD27109755008DB36D /* Cuestion.swift in Sources */,
 				19B8CB3F270E9A9D00368B2D /* ViewController.swift in Sources */,
 				19B8CB3B270E9A9D00368B2D /* AppDelegate.swift in Sources */,
@@ -417,18 +452,23 @@
 				225F8926270F736E003E38AB /* StartTestVC.swift in Sources */,
 				221EE7C82710A8D2008DB36D /* ContenedorPrincipalVC.swift in Sources */,
 				19B8CB3D270E9A9D00368B2D /* SceneDelegate.swift in Sources */,
+				221EE7EE27120D68008DB36D /* BowInternalNotification.swift in Sources */,
 				19B8CB77270EB3E800368B2D /* AttributedTextField.swift in Sources */,
 				221EE7D12710F89E008DB36D /* AttibutedTabBar.swift in Sources */,
 				19B8CB75270EB21200368B2D /* LoginVC.swift in Sources */,
+				221EE7D32711E633008DB36D /* AnswersDB+Singleton.swift in Sources */,
 				19B8CB66270EA51E00368B2D /* BowHeadFont.swift in Sources */,
 				19B8CB72270EAD3A00368B2D /* BowHeadColor.swift in Sources */,
 				225F892E270F8E63003E38AB /* AnswerLogCell.swift in Sources */,
+				221EE7DF2711F5D5008DB36D /* UserAccountDB.swift in Sources */,
 				19B8CB6E270EAAE000368B2D /* AttributedButton.swift in Sources */,
 				221EE7C3271097B0008DB36D /* Catalog+Answer-Option.swift in Sources */,
+				221EE7E92711FFF5008DB36D /* UserAccount.swift in Sources */,
 				221EE7CC2710AA88008DB36D /* UIViewController+Exstensions.swift in Sources */,
 				221EE7C127109783008DB36D /* Answer.swift in Sources */,
 				19B8CB61270EA15000368B2D /* StartVC.swift in Sources */,
 				221EE7CE2710E453008DB36D /* UIViewController+Storyboarded.swift in Sources */,
+				221EE7EB271201EB008DB36D /* LaunchScreenVC.swift in Sources */,
 				225F8934270F8EEB003E38AB /* TestCellTableViewCell.swift in Sources */,
 				221EE7BF2710976F008DB36D /* Option.swift in Sources */,
 				19B8CB64270EA3AE00368B2D /* BowHeadImage.swift in Sources */,
@@ -633,6 +673,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		221EE7D72711F177008DB36D /* BowHeadDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				221EE7D82711F177008DB36D /* BowHeadDB.xcdatamodel */,
+			);
+			currentVersion = 221EE7D82711F177008DB36D /* BowHeadDB.xcdatamodel */;
+			path = BowHeadDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 19B8CB2F270E9A9D00368B2D /* Project object */;
 }

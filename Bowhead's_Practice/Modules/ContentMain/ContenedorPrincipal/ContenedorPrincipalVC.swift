@@ -27,6 +27,7 @@ class ContenedorPrincipalVC: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,13 +36,18 @@ class ContenedorPrincipalVC: UIViewController, Storyboarded {
             loadChild(vc)
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        disableSetup()
+    }
 
 }
 
 
 extension ContenedorPrincipalVC {
     
-    func setup(){
+    func setupUI(){
    
         tabBarOpciones.delegate = self
         tabBarOpciones.isTranslucent = false
@@ -80,15 +86,23 @@ extension ContenedorPrincipalVC {
 //        tabBarOpciones.layer.shadowRadius = 2;
 //        tabBarOpciones.layer.shadowColor = UIColor.black.cgColor
 //        tabBarOpciones.layer.shadowOpacity = 0.3;
-//        
+//
 //        self.view.setNeedsLayout()
 //        self.view.setNeedsDisplay()
-//        
+//
 //        tabBarOpciones.layer.shadowOffset = CGSize(width: 0, height: 0)
 //        tabBarOpciones.layer.shadowRadius = 2
 //        tabBarOpciones.layer.shadowColor = UIColor.black.cgColor
 //        tabBarOpciones.layer.shadowOpacity = 0.3
         
+    }
+    
+    func setup(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAddChild(_:)), name: BowInternalNotification.hijoControlador.name, object: nil)
+    }
+    
+    func disableSetup() {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -100,6 +114,14 @@ extension ContenedorPrincipalVC {
         add(child: controlador, intoContainer: contenedorControladorView)
         controladorActual = controlador
         
+    }
+    
+    
+    @objc func handleAddChild(_ notification: NSNotification) {
+        if let vc = notification.userInfo?["child"] as? UIViewController
+           {
+            loadChild(vc)
+        }
     }
 }
 

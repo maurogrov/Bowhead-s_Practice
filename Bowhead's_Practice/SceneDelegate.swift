@@ -18,14 +18,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        let nc = UINavigationController()
+        let vc = LaunchScreenVC.instantiate(fromStoryboard: .Main)
         
-        //let vc = LaunchScreenVC(view: view)
+        nc.navigationBar.isHidden = true
+        nc.pushViewController(vc, animated: false)
         
-        let vc = ContenedorPrincipalVC.instantiate(fromStoryboard: .Main)
-        let controladorActual = StartTestVC.instantiate(fromStoryboard: .Main)
-        vc.controladorActual = controladorActual
+        //        let vc = ContenedorPrincipalVC.instantiate(fromStoryboard: .Main)
+        //        let controladorActual = StartTestVC.instantiate(fromStoryboard: .Main)
+        //        vc.controladorActual = controladorActual
         
-        window?.rootViewController = vc
+        window?.rootViewController = nc
         window?.makeKeyAndVisible()
     }
 

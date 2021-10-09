@@ -25,6 +25,10 @@ class TestCellTableViewCell: UITableViewCell {
         setupUI()
         nameCuestion.text = item.name
         
+        optionsStack.subviews.forEach({
+            optionsStack.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        })
         for option in item.options {
             let stackView = UIStackView()
             stackView.axis = .horizontal
