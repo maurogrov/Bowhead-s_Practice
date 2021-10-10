@@ -19,21 +19,36 @@ class AnswerLogCell: UITableViewCell {
     
     func configure(_ item: Answers){
         
+        answerStack.subviews.forEach({
+            answerStack.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        })
+        
+        let header = configureHeader(text: item.dateTime.stringFormat())
+        answerStack.addArrangedSubview(header)
+        
         for answer in item.answers {
             let cuestion = cuestions.filter({ $0.idCuestion == answer.idCuestion }).first!
             let option = cuestion.options.filter({ $0.id == answer.idOption }).first!
-            let stack = confitureUI(typeAnswer: cuestion.typeAnswer, response: option.response)
-            answerStack.addArrangedSubview(stack)
+            let rowRegister = setRowRegister(typeAnswer: cuestion.typeAnswer, response: option.response)
+            answerStack.addArrangedSubview(rowRegister)
         }
     }
     
-    func confitureUI(typeAnswer: String, response: String) -> UIStackView {
+    func configureHeader(text : String) -> UILabel {
         
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        //stackView.spacing = 10
+        let headerLbl = UILabel()
+        headerLbl.textColor = .black
+        headerLbl.font = BowHeadFont.Light.font(ofSize: .Minus)
+        headerLbl.textAlignment = .right
+       
+        headerLbl.text = text
+        
+        return headerLbl
+        
+    }
+    
+    func setRowRegister(typeAnswer: String, response: String) -> UILabel {
         
         let typeAnswerLbl = UILabel()
         typeAnswerLbl.textColor = .black
@@ -47,9 +62,8 @@ class AnswerLogCell: UITableViewCell {
                 attributes: [NSAttributedString.Key.font: BowHeadFont.Light.font(ofSize: .Medium)]))
         typeAnswerLbl.attributedText = title
         
-        stackView.addArrangedSubview(typeAnswerLbl)
         
-        return stackView
+        return typeAnswerLbl
     }
     
 

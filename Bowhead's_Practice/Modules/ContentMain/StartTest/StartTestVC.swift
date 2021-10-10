@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class StartTestVC: UIViewController, Storyboarded{
 
     @IBOutlet weak var doctorsImg: UIImageView!
@@ -15,40 +14,31 @@ class StartTestVC: UIViewController, Storyboarded{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var submitTestBtn: AttributedButton!
     @IBOutlet weak var closeBtn: UIButton!
+    @IBOutlet weak var boxDataBtn: UIButton!
     
+    //MARK: -PROPERTIES
+    internal enum GoToEnum {
+        case start
+        case controlTest
+    }
+    internal let br = StartTestBR()
+    internal var answers : [Answers] = AnswersDB.shared.getAnswers()
+    
+    //MARK: -LIFE CICLE
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setup()
-        
-//        if let x = AnswersDB.shared.getAnswers() {
-//            print(x)
-//            try? AnswersDB.shared.deleteAnswers()
-//        }
-//        else {
-//            let x = Answers(dateTime: Date(), answers: [])
-//            try? AnswersDB.shared.setAnswers(answers: x)
-//            let y = AnswersDB.shared.getAnswers()
-//            print(y!)
-//        }
-//
-        
-//        let user = UserAccountDB.shared.getCuenta()
-//        try? UserAccountDB.shared.set(cuenta: UserAccount(name: "Anonimous", password: "123123"))
-//        let user2 = UserAccountDB.shared.getCuenta()
-//        print(user2)
-//
-//        UserAccountDB.shared.deleteCuenta()
-//        let user3 = UserAccountDB.shared.getCuenta()
-//
-        print("finished")
-        
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        br.formatCuestions()
         
     }
     
-    func setupUI(){
+    private func setupUI(){
         
         doctorsImg.image = BowHeadImage.doctors.image
         introductionLbl.text = "Track your wellness"
@@ -57,89 +47,105 @@ class StartTestVC: UIViewController, Storyboarded{
         submitTestBtn.isEnabled = false
         closeBtn.setImage(UIImage(systemName: "power"), for: .normal)
         closeBtn.tintColor = BowHeadColor.GreenAqua.color
+        boxDataBtn.tintColor = BowHeadColor.GreenAqua.color
         
     }
     
-    func setup(){
-        tableView.register(UINib(nibName: TestCellTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TestCellTableViewCell.identifier)
+    private func setup(){
+        
+        let gesture =       UITapGestureRecognizer(target: self, action: #selector(closeSession(_:)))
+        let gestureBoxData = UITapGestureRecognizer(target: self, action: #selector(createBoxData(_:)))
+        let gestureSubmit = UITapGestureRecognizer(target: self, action: #selector(submit(_:)))
+        
+        tableView.register(
+            UINib(nibName: TestCellTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: TestCellTableViewCell.identifier
+        )
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(closeSession(_:)))
+        
         closeBtn.addGestureRecognizer(gesture)
+        boxDataBtn.addGestureRecognizer(gestureBoxData)
+        submitTestBtn.addGestureRecognizer(gestureSubmit)
+        
+        evaluateboxData()
+    }
+      
+    private func evaluateboxData(){
+        let image = answers.count > 1 ? br.trashImage : br.boxImage
+        boxDataBtn.setImage(image, for: .normal)
     }
     
-    func evaluateSubmit() -> Bool {
-        
-        var isEnable = true
-        for cuestion in cuestions {
-            if cuestion.options.filter({ $0.selected }).count == 0 {
-                isEnable = false
-                break
-            }
-        }
-        return isEnable
-    }
-    
-    func submit(){
-        
-        var answersToday = Answers(dateTime: Date(), answers: [])
-        
-        for cuestion in cuestions {
-            let optionSelected = cuestion.options.filter({ $0.selected }).first!
-            answersToday.answers.append(
-                Answer(idCuestion: cuestion.idCuestion, idOption: optionSelected.id)
-            )
-        }
-        
-        #warning("Save Answers")
+    //MARK: -ACTIONS
+    @objc func submit(_ : UITapGestureRecognizer){
+        saveAnsewrsToday(br.createAnswerToday())
     }
     
     @objc func closeSession(_ : UITapGestureRecognizer) {
         
         UserAccountDB.shared.deleteCuenta()
         if UserAccountDB.shared.getCuenta() == nil {
-            goto()
+            goto(.start)
         }
     }
     
-    func goto(){
-        let vc = StartVC.instantiate(fromStoryboard: .Main)
-        self.navigationController?.setViewControllers([vc], animated: true)
+    @objc func createBoxData(_ : UITapGestureRecognizer) {
+        
+        if answers.count > 1 {
+            let alert = AlertBuilder.getConfirmationAlert(message: br.deleteBox, successFunc: {
+                AnswersDB.shared.deleteAllAnswers()
+                self.evaluateboxData()
+            })
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let alert = AlertBuilder.getConfirmationAlert(message: br.createBox, successFunc: {
+            self.br.createCuestionsRandom()
+            self.goto(.controlTest)
+        })
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
+    private func saveAnsewrsToday(_ answers : Answers){
+        
+        do{
+            try AnswersDB.shared.setAnswers(answers: answers, completionHandler: {
+                let alert = AlertBuilder.getMessageAlert(
+                    message: self.br.saveSuccess, completion: nil) {
+                    
+                    self.goto(.controlTest)
+                    
+                }
+                self.present(alert, animated: true, completion: nil)
+                
+            })
+        }
+        catch {
+            //#AlertApiService
+            let alert = AlertBuilder.getMessageAlert(message: br.error)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func goto(_ option: GoToEnum){
+        
+        switch option {
+        case .start:
+            let vc = StartVC.instantiate(fromStoryboard: .Main)
+            self.navigationController?.setViewControllers([vc], animated: true)
+            break
+        case .controlTest:
+            let vc = TestControlVC.instantiate(fromStoryboard: .Main)
+            NotificationCenter.default.post(
+                name: BowInternalNotification.hijoControlador.name,
+                object: nil,
+                userInfo: ["child": vc, "tag": "1"])
+            break
+        }
+    }
 }
 
-extension StartTestVC : UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cuestions.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TestCellTableViewCell.identifier, for: indexPath) as! TestCellTableViewCell
-        let row = indexPath.row
-        cell.configure(cuestions[row])
-        
-        cell.pressActionHandler = { id in
-            //print("\(id)")
-            for (indey, option) in cuestions[row].options.enumerated() {
-                if option.id == id {
-                    cuestions[row].options[indey].selected = true
-                }else {
-                    cuestions[row].options[indey].selected = false
-                }
-            }
-            self.submitTestBtn.isEnabled = self.evaluateSubmit()
-        }
-        
-        
-        return cell
-    }
-    
-    
-    
-    
-    
-}
+

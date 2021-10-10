@@ -29,6 +29,13 @@
 		19B8CB72270EAD3A00368B2D /* BowHeadColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB71270EAD3A00368B2D /* BowHeadColor.swift */; };
 		19B8CB75270EB21200368B2D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB74270EB21200368B2D /* LoginVC.swift */; };
 		19B8CB77270EB3E800368B2D /* AttributedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB76270EB3E800368B2D /* AttributedTextField.swift */; };
+		19B8CB7A27124A7F00368B2D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB7927124A7F00368B2D /* Date+Extensions.swift */; };
+		19B8CB7D27124E4A00368B2D /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB7C27124E4A00368B2D /* AlertBuilder.swift */; };
+		19B8CB7F2712C2EB00368B2D /* StartTestVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB7E2712C2EB00368B2D /* StartTestVC+UITableView.swift */; };
+		19B8CB812712C3FF00368B2D /* StartTestBR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB802712C3FF00368B2D /* StartTestBR.swift */; };
+		19B8CB842712CC6D00368B2D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB832712CC6D00368B2D /* UITableView.swift */; };
+		19B8CB862712CCAD00368B2D /* TestControlVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB852712CCAD00368B2D /* TestControlVC+UITableView.swift */; };
+		19B8CB882712CDBC00368B2D /* TestControlBR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8CB872712CDBC00368B2D /* TestControlBR.swift */; };
 		221EE7BD27109755008DB36D /* Cuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7BC27109755008DB36D /* Cuestion.swift */; };
 		221EE7BF2710976F008DB36D /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7BE2710976F008DB36D /* Option.swift */; };
 		221EE7C127109783008DB36D /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7C027109783008DB36D /* Answer.swift */; };
@@ -79,6 +86,13 @@
 		19B8CB71270EAD3A00368B2D /* BowHeadColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowHeadColor.swift; sourceTree = "<group>"; };
 		19B8CB74270EB21200368B2D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		19B8CB76270EB3E800368B2D /* AttributedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextField.swift; sourceTree = "<group>"; };
+		19B8CB7927124A7F00368B2D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		19B8CB7C27124E4A00368B2D /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		19B8CB7E2712C2EB00368B2D /* StartTestVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartTestVC+UITableView.swift"; sourceTree = "<group>"; };
+		19B8CB802712C3FF00368B2D /* StartTestBR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTestBR.swift; sourceTree = "<group>"; };
+		19B8CB832712CC6D00368B2D /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		19B8CB852712CCAD00368B2D /* TestControlVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestControlVC+UITableView.swift"; sourceTree = "<group>"; };
+		19B8CB872712CDBC00368B2D /* TestControlBR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestControlBR.swift; sourceTree = "<group>"; };
 		221EE7BC27109755008DB36D /* Cuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuestion.swift; sourceTree = "<group>"; };
 		221EE7BE2710976F008DB36D /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		221EE7C027109783008DB36D /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -226,6 +240,8 @@
 		19B8CB6B270EAABB00368B2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				19B8CB822712CC5400368B2D /* UITableView */,
+				19B8CB7B27124E3100368B2D /* Builders */,
 				221EE7CF2710F887008DB36D /* UITabBar */,
 				19B8CB78270EB3EF00368B2D /* UITextField */,
 				19B8CB6C270EAAC500368B2D /* UIButton */,
@@ -258,6 +274,22 @@
 			path = UITextField;
 			sourceTree = "<group>";
 		};
+		19B8CB7B27124E3100368B2D /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				19B8CB7C27124E4A00368B2D /* AlertBuilder.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
+		19B8CB822712CC5400368B2D /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				19B8CB832712CC6D00368B2D /* UITableView.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
 		221EE7BB27109741008DB36D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +316,7 @@
 			children = (
 				221EE7CB2710AA88008DB36D /* UIViewController+Exstensions.swift */,
 				221EE7CD2710E453008DB36D /* UIViewController+Storyboarded.swift */,
+				19B8CB7927124A7F00368B2D /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +362,8 @@
 			children = (
 				225F8931270F8ED1003E38AB /* Cell */,
 				225F8925270F736E003E38AB /* StartTestVC.swift */,
+				19B8CB7E2712C2EB00368B2D /* StartTestVC+UITableView.swift */,
+				19B8CB802712C3FF00368B2D /* StartTestBR.swift */,
 			);
 			path = StartTest;
 			sourceTree = "<group>";
@@ -338,6 +373,8 @@
 			children = (
 				225F8930270F8E6E003E38AB /* Cell */,
 				225F892A270F76AA003E38AB /* TestControlVC.swift */,
+				19B8CB852712CCAD00368B2D /* TestControlVC+UITableView.swift */,
+				19B8CB872712CDBC00368B2D /* TestControlBR.swift */,
 			);
 			path = TestControl;
 			sourceTree = "<group>";
@@ -446,25 +483,32 @@
 				221EE7D92711F177008DB36D /* BowHeadDB.xcdatamodeld in Sources */,
 				221EE7BD27109755008DB36D /* Cuestion.swift in Sources */,
 				19B8CB3F270E9A9D00368B2D /* ViewController.swift in Sources */,
+				19B8CB862712CCAD00368B2D /* TestControlVC+UITableView.swift in Sources */,
 				19B8CB3B270E9A9D00368B2D /* AppDelegate.swift in Sources */,
 				225F892B270F76AA003E38AB /* TestControlVC.swift in Sources */,
 				19B8CB69270EA59100368B2D /* AppFont.swift in Sources */,
 				225F8926270F736E003E38AB /* StartTestVC.swift in Sources */,
 				221EE7C82710A8D2008DB36D /* ContenedorPrincipalVC.swift in Sources */,
+				19B8CB7A27124A7F00368B2D /* Date+Extensions.swift in Sources */,
 				19B8CB3D270E9A9D00368B2D /* SceneDelegate.swift in Sources */,
 				221EE7EE27120D68008DB36D /* BowInternalNotification.swift in Sources */,
+				19B8CB7D27124E4A00368B2D /* AlertBuilder.swift in Sources */,
 				19B8CB77270EB3E800368B2D /* AttributedTextField.swift in Sources */,
 				221EE7D12710F89E008DB36D /* AttibutedTabBar.swift in Sources */,
 				19B8CB75270EB21200368B2D /* LoginVC.swift in Sources */,
 				221EE7D32711E633008DB36D /* AnswersDB+Singleton.swift in Sources */,
+				19B8CB7F2712C2EB00368B2D /* StartTestVC+UITableView.swift in Sources */,
 				19B8CB66270EA51E00368B2D /* BowHeadFont.swift in Sources */,
 				19B8CB72270EAD3A00368B2D /* BowHeadColor.swift in Sources */,
+				19B8CB812712C3FF00368B2D /* StartTestBR.swift in Sources */,
 				225F892E270F8E63003E38AB /* AnswerLogCell.swift in Sources */,
 				221EE7DF2711F5D5008DB36D /* UserAccountDB.swift in Sources */,
 				19B8CB6E270EAAE000368B2D /* AttributedButton.swift in Sources */,
+				19B8CB882712CDBC00368B2D /* TestControlBR.swift in Sources */,
 				221EE7C3271097B0008DB36D /* Catalog+Answer-Option.swift in Sources */,
 				221EE7E92711FFF5008DB36D /* UserAccount.swift in Sources */,
 				221EE7CC2710AA88008DB36D /* UIViewController+Exstensions.swift in Sources */,
+				19B8CB842712CC6D00368B2D /* UITableView.swift in Sources */,
 				221EE7C127109783008DB36D /* Answer.swift in Sources */,
 				19B8CB61270EA15000368B2D /* StartVC.swift in Sources */,
 				221EE7CE2710E453008DB36D /* UIViewController+Storyboarded.swift in Sources */,

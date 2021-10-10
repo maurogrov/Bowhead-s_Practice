@@ -34,6 +34,7 @@ enum BowHeadFontSize: CGFloat {
     case Large = 25
     case Medium = 20
     case Normal = 15
+    case Minus = 12
     
     var size: CGFloat { self.rawValue }
 }

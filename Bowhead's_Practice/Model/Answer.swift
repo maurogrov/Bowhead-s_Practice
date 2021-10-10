@@ -8,6 +8,7 @@
 import Foundation
 
 struct Answers: Codable {
+    var id: Int = 0
     var dateTime : Date
     var answers : [Answer]
 }

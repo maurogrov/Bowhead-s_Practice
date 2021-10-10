@@ -12,6 +12,7 @@ enum BowHeadImage: String {
     case walle = "walle"
     case manSecurity = "manSecurity"
     case doctors = "doctors"
+    case iconMain = "iconMain"
     
     
     

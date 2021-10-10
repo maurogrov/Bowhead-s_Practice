@@ -118,9 +118,18 @@ extension ContenedorPrincipalVC {
     
     
     @objc func handleAddChild(_ notification: NSNotification) {
-        if let vc = notification.userInfo?["child"] as? UIViewController
+        if let vc = notification.userInfo?["child"] as? UIViewController, let tag = notification.userInfo?["tag"] as? String
            {
             loadChild(vc)
+            
+            if tag == "0" {
+                tabBarOpciones.selectedItem = tabBarOpciones.items?.first
+                tagActual = 0
+            }else {
+                tabBarOpciones.selectedItem = tabBarOpciones.items?[1]
+                tagActual = 1
+            }
+            
         }
     }
 }

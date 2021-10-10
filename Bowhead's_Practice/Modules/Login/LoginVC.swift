@@ -26,6 +26,7 @@ class LoginVC: UIViewController, Storyboarded {
         instructionLbl.text = "Create a Password"
         instructionLbl.font = BowHeadFont.Bold.font(ofSize: .Large)
         passwordTxt.placeholder = "Password"
+        passwordTxt.isSecureTextEntry = true
         
         startBtn.setTitle("Lets Go!", for: .normal)
         
@@ -36,7 +37,9 @@ class LoginVC: UIViewController, Storyboarded {
     @objc func log(_ : UITapGestureRecognizer) {
         
         guard let password = passwordTxt.text, password != "" else {
-            #warning("Create Alert")
+            let alert = AlertBuilder.getMessageAlert(
+                message: "Create a password", completion: nil)
+            self.present(alert, animated: true, completion: nil)
             return
         }
         try? UserAccountDB.shared.set(cuenta: UserAccount(name: "Anonymous", password: "\(password)"))

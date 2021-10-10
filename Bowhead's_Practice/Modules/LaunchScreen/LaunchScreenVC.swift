@@ -11,30 +11,35 @@ class LaunchScreenVC: UIViewController, Storyboarded {
 
     @IBOutlet weak var animationImg: UIImageView!
     
-    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timer?.invalidate()
-        timer = nil
-        self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.animationView), userInfo: nil, repeats: false)
-
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        timer?.invalidate()
-        timer = nil
+        animationImg.image = BowHeadImage.iconMain.image
+        setupAnimation()
     }
     
-    @objc func animationView(){
-//        UIView.animate(withDuration: 0.5, delay: 0, options: [ .allowUserInteraction], animations: {
-//            self.meInteresaBtn.alpha = 1.0
-//        })
+    func setupAnimation(){
         
-        goto()
+        let duration = 0.4
+        UIView.animate(withDuration: duration, animations: {
+            self.animationImg.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }, completion: {_ in
+            UIView.animate(withDuration: duration, animations: {
+                self.animationImg.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: {_ in
+                UIView.animate(withDuration: duration, animations: {
+                    self.animationImg.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                }, completion: { _ in
+                    UIView.animate(withDuration: duration, animations: {
+                        self.animationImg.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    }, completion: { _ in
+                        self.goto()
+                    } )
+                })
+            })
+        })
         
-                
     }
     
     func goto(){
@@ -43,10 +48,10 @@ class LaunchScreenVC: UIViewController, Storyboarded {
             let controladorActual = StartTestVC.instantiate(fromStoryboard: .Main)
             vc.controladorActual = controladorActual
             
-            self.navigationController?.setViewControllers([vc], animated: true)
+            self.navigationController?.setViewControllers([vc], animated: false)
         }else {
             let vc = StartVC.instantiate(fromStoryboard: .Main)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, animated: false)
         }
     }
 }
