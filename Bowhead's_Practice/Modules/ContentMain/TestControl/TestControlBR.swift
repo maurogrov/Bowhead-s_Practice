@@ -13,24 +13,45 @@ class TestControlBR {
         UIImage(systemName: "magnifyingglass")!
     }
     
+    var datePicker : UIDatePicker {
+        
+        let datePicker = UIDatePicker()
+        
+        datePicker.maximumDate = Date()
+        datePicker.minimumDate = Calendar.current.date(
+            byAdding: .month, value: -1, to: Date())
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        return datePicker
+    }
+    
+    var alertPicker : UIAlertController {
+        let alertController = UIAlertController(
+            title: "\n\n\n\n\n\n\n\n\n\n\n",
+            message: nil, preferredStyle: .actionSheet)
+        return alertController
+    }
+    
    
     
     func createBuscarBtn() -> UIButton {
         
-        let buscarBtn = UIButton()
+        let searchBtn = UIButton()
       
-        buscarBtn.titleLabel?.font = BowHeadFont.Light.font(ofSize: .Normal)
+        searchBtn.titleLabel?.font = BowHeadFont.Light.font(ofSize: .Normal)
         
-        buscarBtn.setTitleColor(.black, for: .normal)
-        buscarBtn.backgroundColor = .white
+        searchBtn.setTitleColor(.black, for: .normal)
+        searchBtn.backgroundColor = .white
         
      
-        buscarBtn.tintColor = BowHeadColor.GreenAqua.color
-        buscarBtn.layer.cornerRadius = 20.0
-        buscarBtn.layer.borderWidth = 1.0
-        buscarBtn.layer.borderColor = UIColor.lightGray.cgColor
+        searchBtn.tintColor = BowHeadColor.GreenAqua.color
+        searchBtn.layer.cornerRadius = 20.0
+        searchBtn.layer.borderWidth = 1.0
+        searchBtn.layer.borderColor = UIColor.lightGray.cgColor
     
-        return buscarBtn
+        return searchBtn
     }
     
     func createCancelBtn() -> UIButton {

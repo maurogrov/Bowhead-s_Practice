@@ -89,9 +89,12 @@ class AnswersDB {
             let fetch: NSFetchRequest<AnswersDBNS> = AnswersDBNS.fetchRequest()
 
             let results = try context.fetch(fetch)
-
             results.forEach({ context.delete($0) })
+            
+            let result2 = try context.fetch(fetch)
+            print(result2)
             try context.save()
+            
         } catch {
             debugPrint(error)
         }

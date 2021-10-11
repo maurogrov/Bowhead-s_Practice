@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="-1187" y="737"/>
         </scene>
-        <!--Contenedor PrincipalVC-->
+        <!--Container MainVC-->
         <scene sceneID="mVE-n3-W9I">
             <objects>
-                <viewController storyboardIdentifier="ContenedorPrincipalVC" id="rzn-fF-aWv" customClass="ContenedorPrincipalVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerMainVC" id="rzn-fF-aWv" customClass="ContainerMainVC" customModule="Bowhead_s_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Jv-zL-sy8">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +228,7 @@
                     </view>
                     <connections>
                         <outlet property="contenedorControladorView" destination="RKj-pc-U6v" id="T3R-kj-xid"/>
-                        <outlet property="tabBarOpciones" destination="TRF-b5-RfJ" id="wRx-ny-PpZ"/>
+                        <outlet property="tabBar" destination="TRF-b5-RfJ" id="wRx-ny-PpZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eML-Fg-p77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

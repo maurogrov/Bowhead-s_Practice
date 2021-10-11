@@ -31,6 +31,7 @@ extension UIViewController {
         child.willMove(toParent: nil)
         child.view.removeFromSuperview()
         child.removeFromParent()
+        
     }
     
     func dismissKeyboardWhenTapped(){

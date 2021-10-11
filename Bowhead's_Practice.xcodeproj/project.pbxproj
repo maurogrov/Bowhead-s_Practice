@@ -41,7 +41,7 @@
 		221EE7C127109783008DB36D /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7C027109783008DB36D /* Answer.swift */; };
 		221EE7C3271097B0008DB36D /* Catalog+Answer-Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7C2271097B0008DB36D /* Catalog+Answer-Option.swift */; };
 		221EE7C52710A586008DB36D /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 221EE7C42710A585008DB36D /* Poppins-Light.ttf */; };
-		221EE7C82710A8D2008DB36D /* ContenedorPrincipalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7C72710A8D2008DB36D /* ContenedorPrincipalVC.swift */; };
+		221EE7C82710A8D2008DB36D /* ContainerMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7C72710A8D2008DB36D /* ContainerMainVC.swift */; };
 		221EE7CC2710AA88008DB36D /* UIViewController+Exstensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7CB2710AA88008DB36D /* UIViewController+Exstensions.swift */; };
 		221EE7CE2710E453008DB36D /* UIViewController+Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7CD2710E453008DB36D /* UIViewController+Storyboarded.swift */; };
 		221EE7D12710F89E008DB36D /* AttibutedTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE7D02710F89E008DB36D /* AttibutedTabBar.swift */; };
@@ -98,7 +98,7 @@
 		221EE7C027109783008DB36D /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		221EE7C2271097B0008DB36D /* Catalog+Answer-Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Catalog+Answer-Option.swift"; sourceTree = "<group>"; };
 		221EE7C42710A585008DB36D /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		221EE7C72710A8D2008DB36D /* ContenedorPrincipalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenedorPrincipalVC.swift; sourceTree = "<group>"; };
+		221EE7C72710A8D2008DB36D /* ContainerMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerMainVC.swift; sourceTree = "<group>"; };
 		221EE7CB2710AA88008DB36D /* UIViewController+Exstensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Exstensions.swift"; sourceTree = "<group>"; };
 		221EE7CD2710E453008DB36D /* UIViewController+Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboarded.swift"; sourceTree = "<group>"; };
 		221EE7D02710F89E008DB36D /* AttibutedTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttibutedTabBar.swift; sourceTree = "<group>"; };
@@ -303,12 +303,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		221EE7C62710A8AC008DB36D /* ContenedorPrincipal */ = {
+		221EE7C62710A8AC008DB36D /* ContainerMain */ = {
 			isa = PBXGroup;
 			children = (
-				221EE7C72710A8D2008DB36D /* ContenedorPrincipalVC.swift */,
+				221EE7C72710A8D2008DB36D /* ContainerMainVC.swift */,
 			);
-			path = ContenedorPrincipal;
+			path = ContainerMain;
 			sourceTree = "<group>";
 		};
 		221EE7C92710AA59008DB36D /* Extensions */ = {
@@ -350,7 +350,7 @@
 		225F8923270F7344003E38AB /* ContentMain */ = {
 			isa = PBXGroup;
 			children = (
-				221EE7C62710A8AC008DB36D /* ContenedorPrincipal */,
+				221EE7C62710A8AC008DB36D /* ContainerMain */,
 				225F8924270F7351003E38AB /* StartTest */,
 				225F8929270F767F003E38AB /* TestControl */,
 			);
@@ -488,7 +488,7 @@
 				225F892B270F76AA003E38AB /* TestControlVC.swift in Sources */,
 				19B8CB69270EA59100368B2D /* AppFont.swift in Sources */,
 				225F8926270F736E003E38AB /* StartTestVC.swift in Sources */,
-				221EE7C82710A8D2008DB36D /* ContenedorPrincipalVC.swift in Sources */,
+				221EE7C82710A8D2008DB36D /* ContainerMainVC.swift in Sources */,
 				19B8CB7A27124A7F00368B2D /* Date+Extensions.swift in Sources */,
 				19B8CB3D270E9A9D00368B2D /* SceneDelegate.swift in Sources */,
 				221EE7EE27120D68008DB36D /* BowInternalNotification.swift in Sources */,
@@ -662,6 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6AQ88465Q;
 				INFOPLIST_FILE = "Bowhead's_Practice/Info.plist";
@@ -671,6 +672,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mg.Bowhead-s-Practice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -681,6 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L6AQ88465Q;
 				INFOPLIST_FILE = "Bowhead's_Practice/Info.plist";
@@ -690,6 +693,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mg.Bowhead-s-Practice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

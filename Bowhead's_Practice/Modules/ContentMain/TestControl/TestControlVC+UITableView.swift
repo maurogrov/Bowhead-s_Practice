@@ -25,7 +25,7 @@ extension TestControlVC : UITableViewDelegate, UITableViewDataSource {
         stack.distribution = .fillProportionally
         stack.spacing = 20
         
-        let button = createBuscarBtn()
+        let button = createSearchBtn()
         stack.addArrangedSubview(button)
         
         if answerFilter != nil {
@@ -39,7 +39,7 @@ extension TestControlVC : UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
 
-    func createBuscarBtn() -> UIButton {
+    func createSearchBtn() -> UIButton {
         
         let buscarBtn = br.createBuscarBtn()
         

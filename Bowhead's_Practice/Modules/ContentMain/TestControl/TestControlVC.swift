@@ -81,6 +81,8 @@ extension TestControlVC {
         }
     }
     
+    //MARK: -ACTIONS
+    
     @objc func goTo(_ : UITapGestureRecognizer) {
         
         let vc = StartTestVC.instantiate(fromStoryboard: .Main)
@@ -92,31 +94,23 @@ extension TestControlVC {
     
     @objc func buscarBtnAct(_ : UITapGestureRecognizer){
 
-        let myDatePicker: UIDatePicker = UIDatePicker()
+        let datePicker = br.datePicker
+        datePicker.frame = CGRect(
+            x: 10, y: 15, width: self.view.frame.width - 20, height: 200
+        )
+        let alertPicker = br.alertPicker
+        let actions : [UIAlertAction] = [
+            UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                self.dateSelected = datePicker.date
+            }),
+            UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                self.dateSelected = nil
+            })
+        ]
         
-        myDatePicker.maximumDate = Date()
-        myDatePicker.minimumDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
-        
-        myDatePicker.datePickerMode = .date
-        myDatePicker.timeZone = NSTimeZone.local
-        myDatePicker.preferredDatePickerStyle = .wheels
-        myDatePicker.frame = CGRect(x: 10, y: 15, width: self.view.frame.width-20, height: 200)
-        
-        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
-        
-        alertController.view.addSubview(myDatePicker)
-        
-        let selectAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-            //print("Selected Date: \(myDatePicker.date)")
-            self.dateSelected = myDatePicker.date
-            
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            self.dateSelected = nil
-        })
-        alertController.addAction(selectAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
+        alertPicker.view.addSubview(datePicker)
+        actions.forEach({ alertPicker.addAction($0)})
+        present(alertPicker, animated: true)
     }
     
     @objc func cancelSearchBtnAct(_ : UITapGestureRecognizer){

@@ -12,8 +12,8 @@ class StartTestBR {
     //MARK: -MSJ
     var saveSuccess = "Success"
     var error = "Please try later"
-    var createBox = "do you want to create the data test?"
-    var deleteBox = "do you want to delete the data test?"
+    var createBox = "Do you want to create the data test?"
+    var deleteBox = "Do you want to delete the data test?"
     
     //MARK: -PROPERTIES
     let trashImage = UIImage(systemName: "trash")!

@@ -44,9 +44,9 @@ class LaunchScreenVC: UIViewController, Storyboarded {
     
     func goto(){
         if let _ = UserAccountDB.shared.getCuenta() {
-            let vc = ContenedorPrincipalVC.instantiate(fromStoryboard: .Main)
+            let vc = ContainerMainVC.instantiate(fromStoryboard: .Main)
             let controladorActual = StartTestVC.instantiate(fromStoryboard: .Main)
-            vc.controladorActual = controladorActual
+            vc.currentController = controladorActual
             
             self.navigationController?.setViewControllers([vc], animated: false)
         }else {

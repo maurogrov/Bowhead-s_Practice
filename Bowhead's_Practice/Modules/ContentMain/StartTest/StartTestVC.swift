@@ -22,7 +22,7 @@ class StartTestVC: UIViewController, Storyboarded{
         case controlTest
     }
     internal let br = StartTestBR()
-    internal var answers : [Answers] = AnswersDB.shared.getAnswers()
+    internal var answers = AnswersDB.shared.getAnswers()
     
     //MARK: -LIFE CICLE
     override func viewDidLoad() {
@@ -73,6 +73,7 @@ class StartTestVC: UIViewController, Storyboarded{
     }
       
     private func evaluateboxData(){
+        answers = AnswersDB.shared.getAnswers()
         let image = answers.count > 1 ? br.trashImage : br.boxImage
         boxDataBtn.setImage(image, for: .normal)
     }
@@ -92,19 +93,24 @@ class StartTestVC: UIViewController, Storyboarded{
     
     @objc func createBoxData(_ : UITapGestureRecognizer) {
         
+        let alert: UIAlertController!
+        
         if answers.count > 1 {
-            let alert = AlertBuilder.getConfirmationAlert(message: br.deleteBox, successFunc: {
+            alert = AlertBuilder.getConfirmationAlert(message: br.deleteBox, successFunc: {
                 AnswersDB.shared.deleteAllAnswers()
                 self.evaluateboxData()
             })
             self.present(alert, animated: true, completion: nil)
             return
+        }else {
+            alert = AlertBuilder.getConfirmationAlert(message: br.createBox, successFunc: {
+                self.br.createCuestionsRandom()
+                self.evaluateboxData()
+                self.goto(.controlTest)
+            })
         }
         
-        let alert = AlertBuilder.getConfirmationAlert(message: br.createBox, successFunc: {
-            self.br.createCuestionsRandom()
-            self.goto(.controlTest)
-        })
+        
         self.present(alert, animated: true, completion: nil)
         
     }
