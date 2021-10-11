@@ -21,13 +21,16 @@ class StartTestVC: UIViewController, Storyboarded{
         case start
         case controlTest
     }
-    internal let br = StartTestBR()
+    var br : StartTestBR = StartTestBR()
     internal var answers = AnswersDB.shared.getAnswers()
+    
+    deinit {
+        //print("startTest end")
+    }
     
     //MARK: -LIFE CICLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         setup()
     }
@@ -35,7 +38,7 @@ class StartTestVC: UIViewController, Storyboarded{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         br.formatCuestions()
-        
+
     }
     
     private func setupUI(){
@@ -50,13 +53,13 @@ class StartTestVC: UIViewController, Storyboarded{
         boxDataBtn.tintColor = BowHeadColor.GreenAqua.color
         
     }
-    
+
     private func setup(){
-        
+
         let gesture =       UITapGestureRecognizer(target: self, action: #selector(closeSession(_:)))
         let gestureBoxData = UITapGestureRecognizer(target: self, action: #selector(createBoxData(_:)))
         let gestureSubmit = UITapGestureRecognizer(target: self, action: #selector(submit(_:)))
-        
+
         tableView.register(
             UINib(nibName: TestCellTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: TestCellTableViewCell.identifier
@@ -64,14 +67,14 @@ class StartTestVC: UIViewController, Storyboarded{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        
+
         closeBtn.addGestureRecognizer(gesture)
         boxDataBtn.addGestureRecognizer(gestureBoxData)
         submitTestBtn.addGestureRecognizer(gestureSubmit)
-        
+
         evaluateboxData()
     }
-      
+
     private func evaluateboxData(){
         answers = AnswersDB.shared.getAnswers()
         let image = answers.count > 1 ? br.trashImage : br.boxImage
@@ -90,7 +93,7 @@ class StartTestVC: UIViewController, Storyboarded{
             goto(.start)
         }
     }
-    
+
     @objc func createBoxData(_ : UITapGestureRecognizer) {
         
         let alert: UIAlertController!

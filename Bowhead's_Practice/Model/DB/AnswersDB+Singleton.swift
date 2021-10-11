@@ -18,12 +18,11 @@ class AnswersDB {
 
     func getAnswers() -> [Answers] {
         guard Thread.isMainThread else { fatalError("Esta función se debe ejecutar en el hilo principal.") }
+        var dbAnswers : [Answers] = []
+        
         let fetch: NSFetchRequest<AnswersDBNS> = AnswersDBNS.fetchRequest()
-
         guard let results = try? context.fetch(fetch) else { return [] }
 
-        
-        var dbAnswers : [Answers] = []
         for data in results {
             let answers = data.data!
             let decoder = JSONDecoder()

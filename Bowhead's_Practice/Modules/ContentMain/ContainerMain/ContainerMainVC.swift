@@ -79,7 +79,7 @@ extension ContainerMainVC {
         if currentController != nil {
             remove(child: currentController!)
             currentController = nil
-            
+            //print("heelo")
         }
         add(child: controlador, intoContainer: contenedorControladorView)
         currentController = controlador

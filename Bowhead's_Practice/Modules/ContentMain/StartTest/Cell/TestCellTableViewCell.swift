@@ -29,6 +29,8 @@ class TestCellTableViewCell: UITableViewCell {
             optionsStack.removeArrangedSubview($0)
             $0.removeFromSuperview()
         })
+        
+        
         for option in item.options {
             let stackView = UIStackView()
             stackView.axis = .horizontal
@@ -45,19 +47,21 @@ class TestCellTableViewCell: UITableViewCell {
             gesture.tag = option.id
             button.tag = option.id
             button.addGestureRecognizer(gesture)
-            button.pressActionHandler = { isActive in
-                //print(isActive)
-                button.isChecked = isActive
-            }
+            
+            //            button.pressActionHandler = { [weak self] isActive in
+            //                guard self != nil else { return }
+            //                button.isChecked = isActive
+            //            }
+            
             optionsButtons.append(button)
             
             
             let label = UILabel()
             label.text = option.name
             label.font = BowHeadFont.Regular.font(ofSize: .Normal)
-
+            
             stackView.addArrangedSubview(label)
-
+            
             optionsStack.addArrangedSubview(stackView)
         }
     }
@@ -66,9 +70,11 @@ class TestCellTableViewCell: UITableViewCell {
         pressActionHandler?(item.tag)
         for button in optionsButtons {
             if button.tag == item.tag {
-                button.pressActionHandler?(true)
+                button.isChecked = true
+                //button.pressActionHandler?(true)
             }else {
-                button.pressActionHandler?(false)
+                button.isChecked = false
+                //button.pressActionHandler?(false)
             }
         }
         

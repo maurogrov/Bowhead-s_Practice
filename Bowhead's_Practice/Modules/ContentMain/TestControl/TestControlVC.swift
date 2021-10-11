@@ -19,7 +19,12 @@ class TestControlVC: UIViewController, Storyboarded {
     
     var answers : [Answers] = []
     var answerFilter : [Answers]?
-    var br = TestControlBR()
+    var br : TestControlBR = TestControlBR()
+    
+    
+    deinit {
+        //print("testControl end")
+    }
     
     var dateSelected : Date? {
         didSet {
@@ -42,6 +47,7 @@ class TestControlVC: UIViewController, Storyboarded {
         getData()
     }
     
+    
 }
 
 extension TestControlVC {
@@ -62,6 +68,8 @@ extension TestControlVC {
     }
     
     func setupConfig(){
+        
+        
         tableView.register(
             UINib(nibName: AnswerLogCell.identifier, bundle: nil),
             forCellReuseIdentifier: AnswerLogCell.identifier)
@@ -74,6 +82,8 @@ extension TestControlVC {
     }
     
     func getData(){
+        br = TestControlBR()
+        
         let data = AnswersDB.shared.getAnswers()
         if  data.count > 0 {
             answers = data.sorted(by: { $0.dateTime.compare($1.dateTime) == .orderedDescending })

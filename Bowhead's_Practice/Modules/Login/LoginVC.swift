@@ -64,6 +64,8 @@ class LoginVC: UIViewController, Storyboarded {
             self.present(alert, animated: true, completion: nil)
             return
         }
+        
+        
         try? UserAccountDB.shared.set(cuenta: UserAccount(name: "Anonymous", password: "\(password)"))
         goto()
     }
